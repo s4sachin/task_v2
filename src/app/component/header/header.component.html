@@ -1,1 +1,15 @@
-<p>header works!</p>
+<mat-toolbar>
+  <div fxHide.gt-xs>
+    <button mat-icon-button>
+      <mat-icon> menu </mat-icon>
+    </button>
+  </div>
+  <div>
+    <a routerLink="/">Data Table</a>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="end" fxLayoutGap="15px" fxHide.xs>
+    <a routerLink="">Signup</a>
+    <a routerLink="">Login</a>
+    <a style="cursor: pointer">Logout</a>
+  </div>
+</mat-toolbar>
