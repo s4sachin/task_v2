@@ -18,7 +18,7 @@ export class TableComponent implements OnInit {
   sort!: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   csvRecords: Data[] = [];
-
+  sum: any;
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
@@ -51,4 +51,5 @@ export class TableComponent implements OnInit {
         this.dataSource.data = results;
       });
   }
+  displayedColumns[1]
 }
