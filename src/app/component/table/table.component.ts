@@ -11,7 +11,7 @@ import { Data } from 'src/app/interface/data';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['policyId', 'statecode', 'county', 'sum'];
   dataSource = new MatTableDataSource();
   results: any;
   @ViewChild(MatSort, { static: false })
