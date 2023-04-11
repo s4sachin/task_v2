@@ -51,5 +51,4 @@ export class TableComponent implements OnInit {
         this.dataSource.data = results;
       });
   }
-  displayedColumns[1]
 }
