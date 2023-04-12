@@ -7,8 +7,7 @@ import { Data } from '../interface/data';
   providedIn: 'root',
 })
 export class DataService {
-  apiUrl =
-    'https://drive.google.com/file/d/1FeAI_D3D_xlfZ__a7MFSCviBLrVc2jFk/view?usp=share_link';
+  apiUrl = 'https://drive.google.com/file/d/1FeAI_D3D_xlfZ__a7MFSCviBLrVc2jFk';
   httpHeaders = [''];
   constructor(private http: HttpClient) {}
   getTableData(): Observable<Data[]> {

@@ -17,4 +17,5 @@ export interface Data {
   line?: string;
   construction?: string;
   point_granularity?: number;
+  total?: number;
 }
