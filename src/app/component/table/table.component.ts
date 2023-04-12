@@ -10,7 +10,7 @@ import { Data } from 'src/app/interface/data';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['construction', 'statecode', 'county', 'total'];
   columnsToDisplay: string[] = this.displayedColumns.slice();
   dataSource = new MatTableDataSource<Data>();
