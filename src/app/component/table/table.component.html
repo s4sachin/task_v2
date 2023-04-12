@@ -1,34 +1,39 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-
-  <!-- Position Column -->
+<table
+  mat-table
+  [dataSource]="dataSource"
+  class="mat-elevation-z8 header"
+  tabindex="0"
+>
   <ng-container matColumnDef="policyId">
-    <th mat-header-cell *matHeaderCellDef>POLICY ID</th>
+    <th mat-header-cell *matHeaderCellDef class="header">POLICY ID</th>
     <td mat-cell *matCellDef="let element">
-      {{ element.policyId }}
+      {{ element.policyID }}
     </td>
   </ng-container>
 
-  <!-- Name Column -->
   <ng-container matColumnDef="statecode">
-    <th mat-header-cell *matHeaderCellDef>STATE-CODE</th>
+    <th mat-header-cell *matHeaderCellDef class="header">STATE-CODE</th>
     <td mat-cell *matCellDef="let element">
-      {{ element.statecode | uppercase }}
+      {{ element.statecode }}
     </td>
   </ng-container>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="county">
-    <th mat-header-cell *matHeaderCellDef>COUNTY</th>
-    <td mat-cell *matCellDef="let element">{{ element.county }}</td>
-  </ng-container>
-
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="sum">
-    <th mat-header-cell *matHeaderCellDef>SUM</th>
+  <ng-container matColumnDef="construction">
+    <th mat-header-cell *matHeaderCellDef class="header">CONSTRUCTION</th>
     <td mat-cell *matCellDef="let element">
-      {{ element.county + element.statecode }}
+      {{ element.construction }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="county">
+    <th mat-header-cell *matHeaderCellDef class="header">COUNTY</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.county }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="total">
+    <th mat-header-cell *matHeaderCellDef class="header">ADD COLUMNS</th>
+    <td mat-cell *matCellDef="let element">
+      {{ total }}
     </td>
   </ng-container>
 

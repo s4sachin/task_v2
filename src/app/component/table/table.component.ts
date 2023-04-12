@@ -11,14 +11,16 @@ import { Data } from 'src/app/interface/data';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-  displayedColumns: string[] = ['policyId', 'statecode', 'county', 'sum'];
-  dataSource = new MatTableDataSource();
-  results: any;
+  displayedColumns: string[] = ['construction', 'statecode', 'county', 'total'];
+  columnsToDisplay: string[] = this.displayedColumns.slice();
+  dataSource = new MatTableDataSource<Data>();
+  csvRecords: Data[] = [];
+  total: string = '';
+
   @ViewChild(MatSort, { static: false })
   sort!: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
-  csvRecords: Data[] = [];
-  sum: any;
+
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
@@ -28,27 +30,36 @@ export class TableComponent implements OnInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
+
   onGetTableData() {
     this.dataService
       .getTableData()
       .pipe()
       .subscribe((response: string | any) => {
+        // Refactoring csv data to json
         let lines = response.split('\n');
-        // console.log('Lines value is: ' + lines);
+        // Heading for the data table
         let headers = lines[0].split(',');
-        // console.log('headers value is: ' + headers);
-        let results: any[] = [];
-        for (let i = 1; i < lines.length; i++) {
+        for (let i = 1; i < lines.length - 1; i++) {
           let line = lines[i];
           let row: { [index: string]: Data } = {};
           line.split(',').forEach((item: any, idx: number) => {
             row[headers[idx]] = item;
           });
-          results.push(row);
+          this.csvRecords.push(row);
         }
-        console.log(results);
-        console.log(results[0]);
-        this.dataSource.data = results;
+        // Adding column 1 and column 2
+        const addColumns: any = () => {
+          this.csvRecords.forEach((item) => {
+            let c1: any = item.statecode;
+            console.log(c1);
+            let c2 = item.county;
+            console.log(c2);
+            this.total = c1 + c2;
+          });
+        };
+        addColumns();
+        this.dataSource.data = this.csvRecords;
       });
   }
 }
